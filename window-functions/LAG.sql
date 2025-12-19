@@ -1,0 +1,32 @@
+-- Basic LAG() Usage
+SELECT SELLER,
+       SOLD_AT,
+       AMOUNT,
+       LAG(AMOUNT) OVER (
+           ORDER BY SOLD_AT
+           ) PREVISOUS_AMOUNT
+FROM SALES;
+
+-- LAG() with PARTITION BY
+SELECT SELLER,
+       SOLD_AT,
+       AMOUNT,
+       LAG(AMOUNT) OVER (
+           PARTITION BY SELLER -- GROUP/SPLIT ROW BY SELLER
+           ORDER BY SOLD_AT
+           ) PREVISOUS_AMOUNT
+FROM SALES;
+
+-- LAG() with Custom Offset and Default Value
+SELECT SELLER,
+       SOLD_AT,
+       AMOUNT,
+       LAG(AMOUNT, 1, 0) OVER ( -- OFFSET 1 ( DEFAULT IS 1 ), DEFAULT VALUE 0
+           PARTITION BY SELLER
+           ORDER BY SOLD_AT
+           ) AS PREVIOUS_AMOUNT,
+       LAG(AMOUNT, 2, 0) OVER ( -- OFFSET 2 , DEFAULT VALUE 0
+           PARTITION BY SELLER
+           ORDER BY SOLD_AT
+           ) AS TWO_SALES_AGO
+FROM SALES;
