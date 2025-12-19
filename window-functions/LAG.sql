@@ -17,7 +17,6 @@ SELECT SELLER,
            ) PREVISOUS_AMOUNT
 FROM SALES;
 
-
 -- LAG() with Custom Offset and Default Value
 SELECT SELLER,
        SOLD_AT,
@@ -31,4 +30,3 @@ SELECT SELLER,
            ORDER BY SOLD_AT
            ) AS TWO_SALES_AGO
 FROM SALES;
-
