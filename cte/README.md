@@ -1,18 +1,42 @@
-# SQL WINDOWS FUNCTIONS 
+## COMMON TABLE EXPRESSIONS (CTE)
 
-In SQL,
-window functions (also known as analytic functions) perform calculations across a set of rows related to the current row without "collapsing" them into a single summary row. 
-While a standard GROUP BY reduces your output to one row per group, a window function keeps every individual row intact while adding a new column for the calculation. 
+A CTE (Common Table Expression) is a temporary result set that exists only during query execution. It makes complex queries more readable and organized.
 
-Key Components: The OVER() Clause
-Every window function requires an OVER() clause, which defines the "window" of data to look at. It has three main parts: 
+#### SYNTAX
+```sql
+WITH cte_name AS (
+    SELECT column1, column2
+    FROM table
+    WHERE condition
+)
+SELECT * FROM cte_name;
+```
 
- - PARTITION BY: Divides the rows into groups (similar to GROUP BY).
- - ORDER BY: Sorts rows within each group, which is essential for things like rankings or running totals.
- - ROWS/RANGE: (Optional) Defines a specific "frame" or subset of rows relative to the current row (e.g., "current row and the 2 preceding rows")
+A recursive CTE references itself to work with hierarchical data (org charts, categories, trees).
 
-### Common Function Types:
-- [LAG](https://github.com/robsonoduarte/learn-sql/blob/main/window-functions/LAG.sql) Gets a value from a previous row (great for calculating "change vs last month").
+#### SYNTAX
+```sql
+WITH RECURSIVE cte_name AS (
+    -- ANCHOR MEMBER (executed once)
+    SELECT columns
+    FROM table
+    WHERE initial_condition
+    
+    UNION ALL
+    
+    -- RECURSIVE MEMBER (repeats until condition fails)
+    SELECT columns
+    FROM table
+    JOIN cte_name ON join_condition
+    WHERE recursive_condition
+)
+SELECT * FROM cte_name;
+```
+
+#### Exemples:
+
+ * [CTE](https://github.com/robsonoduarte/learn-sql/blob/aa99d568c7f277fa3be23945b960890576c6443c/cte/CTE.sql#L1-L64)
+ * [CTE Recursiva](https://github.com/robsonoduarte/learn-sql/blob/aa99d568c7f277fa3be23945b960890576c6443c/cte/CTE.sql#L67-L152)
 
 
 #### start the docker compose before to run the queries:

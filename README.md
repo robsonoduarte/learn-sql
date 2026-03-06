@@ -3,3 +3,4 @@ Repo for studies about SQL
 
  - [SQL WINDOWS FUNCTIONS](https://github.com/robsonoduarte/learn-sql/tree/main/window-functions)
  - [SQL CONDITIONAL AGGREGATIONS](https://github.com/robsonoduarte/learn-sql/tree/main/conditional-aggregation)
+ - [SQL  COMMON TABLE EXPRESSIONS (CTE)](https://github.com/robsonoduarte/learn-sql/tree/main/cte)   
