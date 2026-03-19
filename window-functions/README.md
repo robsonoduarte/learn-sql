@@ -13,6 +13,7 @@ Every window function requires an OVER() clause, which defines the "window" of d
 
 ### Common Function Types:
 - [LAG](https://github.com/robsonoduarte/learn-sql/blob/main/window-functions/LAG.sql) Gets a value from a previous row (great for calculating "change vs last month").
+- [NTILE]()Divides data into N approximately equal groups and numbers each group. Useful for creating categorized rankings, such as performance quartiles or percentiles.
 
 
 #### start the docker compose before to run the queries:

@@ -1,0 +1,13 @@
+-- classification of sales by amount quartile
+SELECT
+    ID,
+    SELLER,
+    AMOUNT,
+    SOLD_AT,
+    CASE
+        WHEN NTILE(4) OVER (ORDER BY AMOUNT) = 4 THEN 'HIGH SALE'
+        WHEN NTILE(4) OVER (ORDER BY AMOUNT) = 1 THEN 'LOW SALE'
+        ELSE 'AVERAGE SALE'
+        END AS CLSSIFICATION
+FROM SALES
+ORDER BY AMOUNT DESC ;
